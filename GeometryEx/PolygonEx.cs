@@ -80,7 +80,7 @@ namespace GeometryEx
             }
             return mrgPolygons;
         }
-        
+
         /// <summary>
         /// Returns a CompassBox representation of the Polygon's bounding box.
         /// </summary>
@@ -343,7 +343,7 @@ namespace GeometryEx
             var adjCompass = adjTo.Compass();
             return polygon.MoveFromTo(thisCompass.PointBy(from), adjCompass.PointBy(to));
         }
-        
+
         /// <summary>
         /// Creates a new CCW Polygon of the same vertices with the start point now at the specified Polygon vertex.
         /// </summary>
@@ -488,7 +488,7 @@ namespace GeometryEx
             var lines = new List<Line>();
             foreach (var line in skeleton)
             {
-                if(polygon.Contains(line.Start) && polygon.Contains(line.End))
+                if (polygon.Contains(line.Start) && polygon.Contains(line.End))
                 {
                     lines.Add(line);
                 }
@@ -531,7 +531,7 @@ namespace GeometryEx
             var elev = polygon.Vertices.First().Z;
             var delTriangles = new Delaunator(points.ToArray()).GetTriangles().ToList();
             var mesh = new Mesh();
-            foreach(var triangle in delTriangles)
+            foreach (var triangle in delTriangles)
             {
                 var vertices = new List<Vector3>();
                 triangle.Points.ToList().ForEach(p => vertices.Add(new Vector3(p.X, p.Y, elev)));
@@ -544,9 +544,9 @@ namespace GeometryEx
                 {
                     winder = winder.Reversed();
                 }
-                var mTriangle = new Elements.Geometry.Triangle(new Elements.Geometry.Solids.Vertex(winder.Vertices[0]),
-                                                               new Elements.Geometry.Solids.Vertex(winder.Vertices[1]),
-                                                               new Elements.Geometry.Solids.Vertex(winder.Vertices[2]));
+                var mTriangle = new Elements.Geometry.Triangle(new Elements.Geometry.Vertex(winder.Vertices[0]),
+                                                               new Elements.Geometry.Vertex(winder.Vertices[1]),
+                                                               new Elements.Geometry.Vertex(winder.Vertices[2]));
                 mesh.AddTriangle(mTriangle);
                 mesh.AddVertex(mTriangle.Vertices[0].Position);
                 mesh.AddVertex(mTriangle.Vertices[1].Position);

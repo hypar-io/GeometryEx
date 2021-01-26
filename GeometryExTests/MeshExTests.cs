@@ -7,6 +7,7 @@ using Elements.Geometry;
 using Elements.Geometry.Solids;
 using Elements.Serialization.glTF;
 using GeometryEx;
+using Vertex = Elements.Geometry.Vertex;
 
 namespace GeometryExTests
 {
@@ -213,7 +214,7 @@ namespace GeometryExTests
             var conEdges = mesh.ConcaveEdges(Vector3.ZAxis);
             Assert.Equal(8, conEdges.Count);
         }
-        
+
         [Fact]
         public void ConcavePoints()
         {
@@ -874,7 +875,7 @@ namespace GeometryExTests
 
         [Fact]
         public void IsFlatMesh()
-        { 
+        {
             var triangles = new List<Triangle>
             {
                 new Triangle(new Vertex(new Vector3(2.0, 2.0, 12.0)),
