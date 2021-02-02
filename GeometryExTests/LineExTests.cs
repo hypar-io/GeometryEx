@@ -5,6 +5,7 @@ using Xunit;
 using Elements.Geometry;
 using Elements.Geometry.Solids;
 using GeometryEx;
+using Vertex = Elements.Geometry.Vertex;
 
 
 

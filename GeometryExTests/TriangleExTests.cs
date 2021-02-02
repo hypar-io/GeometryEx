@@ -5,6 +5,7 @@ using Elements;
 using Elements.Geometry;
 using Elements.Geometry.Solids;
 using GeometryEx;
+using Vertex = Elements.Geometry.Vertex;
 
 namespace GeometryExTests
 {
@@ -33,7 +34,7 @@ namespace GeometryExTests
         [Fact]
         public void Edges()
         {
-            var t1 = 
+            var t1 =
                 new Triangle(new Vertex(new Vector3(2.0, 2.0, 12.0)),
                              new Vertex(new Vector3(9.0, 2.0, 12.0)),
                              new Vertex(new Vector3(5.0, 4.0, 10.0)));

@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hypar.Elements" Version="0.8.0" />
+    <PackageReference Include="Hypar.Elements" Version="0.8.2" />
     <PackageReference Include="ParagonClipper" Version="6.4.2" />
     <PackageReference Include="SkeletonNet" Version="1.0.0" />
   </ItemGroup>
