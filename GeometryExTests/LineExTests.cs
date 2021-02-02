@@ -6,6 +6,8 @@ using Elements.Geometry;
 using Elements.Geometry.Solids;
 using GeometryEx;
 
+
+
 namespace GeometryExTests
 {
     public class LineExTests

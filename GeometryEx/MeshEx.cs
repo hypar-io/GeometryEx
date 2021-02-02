@@ -827,7 +827,6 @@ namespace GeometryEx
         /// NOTE: ELIMINATES HOLES IN THE MESH.
         /// TODO: PRESERVE HOLES.
         /// </summary>
-        /// <param name="mesh"></param>
         /// <returns>
         /// A List of IndexedVertices.
         /// </returns>
