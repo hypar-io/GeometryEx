@@ -5,6 +5,7 @@ using Elements.Geometry;
 using Elements.Geometry.Solids;
 using SkeletonNet;
 using SkeletonNet.Primitives;
+using Vertex = Elements.Geometry.Vertex;
 
 namespace GeometryEx
 {
