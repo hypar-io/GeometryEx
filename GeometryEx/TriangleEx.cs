@@ -45,6 +45,10 @@ namespace GeometryEx
             var edges = new List<Line>();
             var points = new List<Vector3>();
             triangle.Vertices.ToList().ForEach(v => points.Add(v.Position));
+            if (points.Distinct().Count() != 3)
+            {
+                return new List<Line>();
+            }
             edges.Add(new Line(points[0], points[1]));
             edges.Add(new Line(points[1], points[2]));
             edges.Add(new Line(points[2], points[0]));
@@ -58,7 +62,7 @@ namespace GeometryEx
         /// <returns>
         /// True if the Triangle vertex positions are AlmostEqual to those of the supplied Triangle.
         /// </returns>
-        public static bool IsEqualTo(this Elements.Geometry.Triangle triangle, 
+        public static bool IsEqualTo(this Elements.Geometry.Triangle triangle,
                                           Elements.Geometry.Triangle thatTriangle)
         {
             var points = triangle.Points();
@@ -158,6 +162,10 @@ namespace GeometryEx
         /// <returns></returns>
         public static Polygon ToPolygon(this Elements.Geometry.Triangle triangle)
         {
+            if (triangle.Vertices.Select(v => v.Position).Distinct().Count() != 3)
+            {
+                return null;
+            }
             var polygon = new Polygon(triangle.Points());
             return polygon.IsClockWise() ? polygon.Reversed() : polygon;
         }

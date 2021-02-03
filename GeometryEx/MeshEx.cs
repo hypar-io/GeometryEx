@@ -63,7 +63,8 @@ namespace GeometryEx
                 return null;
             }
             var triangles = new List<Triangle>();
-            foreach (var triangle in mesh.Triangles)
+            var validTriangles = mesh.Triangles.Where(t => t.Vertices.Select(v => v.Position).Distinct().Count() == 3);
+            foreach (var triangle in validTriangles)
             {
                 var points = triangle.Points();
                 if (edge.Start.IsListed(points) && edge.End.IsListed(points))
@@ -95,7 +96,7 @@ namespace GeometryEx
                 var common = 0;
                 triang.Points().ForEach(p => common += p.Occurs(triPoints));
                 if (common == 2)
-                { 
+                {
                     triangles.Add(triang);
                 }
             }
@@ -130,7 +131,7 @@ namespace GeometryEx
                 return average;
             }
             var vectors = new List<Vector3>();
-            EdgesAt(mesh, point).ForEach(e => 
+            EdgesAt(mesh, point).ForEach(e =>
                 vectors.Add(new Vector3(e.End.X - e.Start.X, e.End.Y - e.Start.Y, e.End.Z - e.Start.Z).Unitized()));
             average = vectors[0].Average(vectors[1]);
             for (int i = 2; i < vectors.Count; i++)
@@ -283,7 +284,7 @@ namespace GeometryEx
         }
 
         /// <summary>
-        /// Returns the Mesh Triangle(s) that share two vertices of the supplied Triangle 
+        /// Returns the Mesh Triangle(s) that share two vertices of the supplied Triangle
         /// and which are convex to the supplied Triangle relative to the supplied normal.
         /// </summary>
         /// <param name="triangle">A Mesh triangle.</param>
@@ -380,7 +381,7 @@ namespace GeometryEx
         }
 
         /// <summary>
-        /// Returns ordered Lists of perimeter edges from a Mesh. 
+        /// Returns ordered Lists of perimeter edges from a Mesh.
         /// There is no guarantee of directionality, only spatially sequential lines.
         /// </summary>
         /// <returns>
@@ -657,7 +658,7 @@ namespace GeometryEx
             }
             return true;
         }
-        
+
         /// <summary>
         /// Tests the spatial relationship of the supplied mesh point with adjacent points and a supplied normal to recursively discover the "lowest" connected point with reference to the supplied normal.
         /// </summary>
@@ -836,7 +837,7 @@ namespace GeometryEx
             indexedVertices.triangles = new List<List<int>>();
             indexedVertices.vertices = new List<Vertex>();
             var i = 0;
-            foreach(var point in mesh.PointsBoundary())
+            foreach (var point in mesh.PointsBoundary())
             {
                 indexedVertices.vertices.Add(
                     new Vertex
@@ -858,7 +859,7 @@ namespace GeometryEx
                     });
                 i++;
             }
-            foreach(var triangle in mesh.Triangles)
+            foreach (var triangle in mesh.Triangles)
             {
                 var indices = new List<int>();
                 triangle.Vertices.ToList().ForEach(
